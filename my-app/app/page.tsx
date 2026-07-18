@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Sora, Inter } from "next/font/google";
 import {
   ShieldCheck,
@@ -11,6 +11,15 @@ import {
   Sparkles,
 } from "lucide-react";
 
+
+const fade: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.65, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
+  }),
+};
 /* ── TYPOGRAPHY — two families only ──────────────────────────── */
 const sora = Sora({
   subsets: ["latin"],
@@ -48,15 +57,6 @@ const avatars = [
   "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80",
   "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&q=80",
 ];
-
-const fade = {
-  hidden: { opacity: 0, y: 24 },
-  show: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
 
 export default function Hero() {
   return (
